@@ -1,0 +1,136 @@
+%%% Your .sty File %%%
+\ProvidesPackage{yourStyleFile}
+
+
+%%% Setting up references %%%
+
+%\usepackage[round,comma]{natbib}
+\usepackage[backend=bibtex, style=authoryear-comp, useprefix=true,natbib]{biblatex}
+\addbibresource{dissbib1.bib}
+
+
+%%% Font formatting %%%
+
+\usepackage[german,main=english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[explicit]{titlesec}
+
+\expandafter\def\csname ver@xunicode.sty\endcsname{}
+
+
+%Quotation
+\usepackage{dirtytalk}
+
+%%% Utilities %%%
+
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{soul}
+
+
+%%% Page layout %%%
+
+%Page number always on bottom of page
+\usepackage{afterpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot[CO,CE]{\thepage}
+%\fancyhead[RE,RO]{\small}
+%\fancyhead[RO]{\small}
+\fancyhead[RE]{\small \rightmark}
+\fancyhead[LO]{\small \rightmark}
+%\cfoot{\thepage}
+
+%%% Linguistics stuff 1 %%%
+
+\usepackage{tipa}
+%Linguex needs to be after tipa
+\usepackage{linguex}
+
+
+%%% Creating hyperlinks %%%
+
+\usepackage{hyperref}
+% for hyperlinks
+% supposed to come
+% (ha, see below)
+	
+\hypersetup{
+colorlinks   	= true, 		
+% Colors links instead of ugly boxes
+urlcolor     		= linkcolor, 	
+% Color for external hyperlinks
+linkcolor    		= linkcolor, 	
+% Color of internal links
+citecolor   		= linkcolor 		
+% Color of citations
+		}
+
+% define a color for hyperlinks
+\definecolor{linkcolor}{RGB}{10,135,255}
+
+%%% More formatting %%%
+
+%Inline headers
+\setcounter{secnumdepth}{4}
+\titleformat{\paragraph}[runin]
+  {\normalfont\normalsize\bfseries}{}{15pt}{\theparagraph\hspace*{1em}#1.}
+\titleformat{name=\paragraph,numberless}[runin]
+  {\normalfont\normalsize\bfseries}{}{15pt}{#1.}
+
+%distance between text and footnote
+\setlength{\skip\footins}{16pt}
+
+		
+%Roman numerals
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+% -----------------------
+% MY COMMANDS
+% -----------------------
+
+%highlighting 
+%Use: \hlc{text}{color}
+\newcommand{\hlc}[2][yellow]{ {\sethlcolor{#1} \hl{#2}} }
+
+%Not necessary with linguex
+%\newcommand {\reff}[1] {(\hyperref[#1]{\ref*{#1}})}
+	% put example numbers in brackets automatically
+	% and link them to the respective example
+
+
+%Possessive citing
+\DeclareCiteCommand{\citeyear}{}					 {\bibhyperref{\printdate}}
+{\multicitedelim}
+{}   		 
+% Hyperlinks year-only citations to the reference
+% Mostly so that \pcitep will have a link
+
+\newcommand {\pcitep}[1] {\citeauthor{#1}'s (\citeyear{#1})}			
+%%% For creating empty pages for printing %%%
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}	
+
+
+% -----------------------
+% GLOSSARY
+% -----------------------
+
+
+
+\makenoidxglossaries
+\renewcommand*{\glspostdescription}{}
+
+\newglossaryentry{fut}{name={fut},description={future tense}}
+\newglossaryentry{perf}{name={perf},description={perfect}}
+\newglossaryentry{prog}{name={prog},description={progressive}}
+

@@ -1,0 +1,127 @@
+
+\documentclass[11pt,letterpaper ,oneside ,openright]{book}
+
+\usepackage[pass]{geometry}
+
+\usepackage{glossaries}
+\usepackage{glossary-mcols}
+\usepackage{yourStyleFile}
+
+\usepackage{stackengine}
+%\usepackage{pdflscape}
+\usepackage{epigraph}
+\setlength{\epigraphwidth}{0.9\textwidth}
+\usepackage{chngcntr}
+%\counterwithin{exx}{chapter}
+
+%%% Stuff used for the title page %%%
+
+% Include the textpos package
+\usepackage[absolute,overlay]{textpos}
+
+\definecolor{seeblau}{RGB}{0, 169, 224}
+\setulcolor{seeblau}
+\setul{0.1ex}{0.2ex}
+
+\newcommand{\tinyspace}{\nobreak\hspace{.16667em}}
+
+
+
+%\usepackage[left=2.5cm,right=2.5cm,top=2cm,bottom=2.5cm]{geometry}
+
+\title{\bf Your title}
+
+\author{Your name}
+\date{University of Konstanz}
+
+
+
+
+
+\begin{document}
+
+
+%\maketitle
+
+% -----------------------
+% 1. Title page
+% -----------------------
+
+\newgeometry{hmarginratio=1:1,bottom=1cm}
+\input{upload/tex/dissertation_titlepage}
+\restoregeometry
+
+
+%Blank spaces for printing phd thesis
+% \clearpage
+% 	\afterpage{\blankpage}
+% \clearpage
+% 	\afterpage{\blankpage}
+% \clearpage
+% \afterpage{\blankpage}
+% \clearpage
+	
+
+%\hfill{}
+%\clearpage
+%	\afterpage{\blankpage}
+%\clearpage
+%%	\afterpage{\blankpage}
+%\clearpage
+
+%Deep in the human unconscious is a pervasive need for a logical universe that makes sense. But the real universe is always one step beyond logic.
+%-- from "The Sayings of Muad'Dib"
+%by the Princess Irulan
+
+% -----------------------
+% Pre-amble: abstract, table of contents, glossary, etc.
+% -----------------------
+	
+		\pagestyle{plain}
+	% set Roman page numbers
+
+	% acknowledgements
+	\pagenumbering{roman}
+
+	\input{./tex/abstract.tex}
+	\clearpage
+	\input{./tex/Abstract-de.tex}
+	\clearpage
+	\afterpage{\blankpage}
+\clearpage
+	\input{./tex/Thanks.tex}
+
+\clearpage
+
+\glsaddall
+\printnoidxglossary[type=main,style=mcolindex,nonumberlist]
+
+% table of contents
+\tableofcontents
+\clearpage
+\listoffigures
+\clearpage
+\listoftables
+\clearpage
+\afterpage{\blankpage}
+\clearpage
+
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot[CO,CE]{\thepage}
+	\fancyhead[RE]{\small \rightmark}
+\fancyhead[LO]{\small \leftmark}
+	\pagenumbering{arabic}
+	% begin Arabic page numbers
+	\input{./tex/introduction.tex}
+	\input{./tex/background.tex}
+	\input{./tex/Chapter2.tex}
+	\input{./tex/Chapter3.tex}
+	\input{./tex/Chapter4.tex}
+	\input{./tex/Chapter5.tex}
+	 %chapters
+	 
+	 \printbibliography
+
+\end{document}
