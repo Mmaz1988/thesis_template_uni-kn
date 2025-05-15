@@ -5,14 +5,16 @@
 %%% Setting up references %%%
 
 %\usepackage[round,comma]{natbib}
-\usepackage[backend=bibtex, style=authoryear-comp, useprefix=true,natbib]{biblatex}
+\usepackage[backend=bibtex, style=authoryear-comp, useprefix=true,natbib, dashed=false]{biblatex}
 \addbibresource{dissbib1.bib}
 
 
+
+
 %%% Font formatting %%%
-\usepackage[german,main=english]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[german,main=english,russian]{babel}
 \usepackage[explicit]{titlesec}
 
 \expandafter\def\csname ver@xunicode.sty\endcsname{}
@@ -133,3 +135,61 @@ citecolor   		= linkcolor
 \newglossaryentry{perf}{name={perf},description={perfect}}
 \newglossaryentry{prog}{name={prog},description={progressive}}
 
+
+
+% -----------------------
+% TIKZ and other fancy stuff
+% -----------------------
+
+%TiKZ is a library for drawing custom figures
+
+\usepackage{tikz-qtree}
+\usepackage{tikz}
+%\usepackage{twoopt} for drawing decision trees
+\usetikzlibrary{calc}
+\usetikzlibrary{fit}
+\usetikzlibrary{tikzmark}
+%For prooftrees
+\usepackage{bussproofs}
+\usepackage{tkz-euclide} %for diagrams
+
+\usepackage{avm} % for attribute/value matrices (e.g. f-structures)
+\usepackage{drs} % For discourse representation structures
+\usepackage{amssymb} %For mathematical symbols
+
+%Tikz nodes for drawing lines
+\newcommand{\tikznode}[2]{%
+  {\tikz[remember picture, baseline=(#1.base)]\node[inner sep=1pt](#1){#2};}%
+}
+
+\usepackage{tikz-dependency}
+
+% -----------------------
+% Code blocks
+% -----------------------
+\usepackage{listings}
+\lstset{
+    basicstyle=\ttfamily\footnotesize, % Monospaced font
+    breaklines=true, % Enable line breaking
+    showstringspaces=false, % Don't show spaces as special characters
+    otherkeywords = {-o,\[,\]},
+    keywordstyle = [1]{\color{green}},
+    keywordstyle = [2]{\color{blue}},
+    keywordstyle = [3]{\color{red}},
+    morekeywords = [2]{-o},
+    morekeywords = [3]{\[,\]},
+    literate=
+    {(}{{{\textcolor{green}{(}}}}1 % Highlight ( in green
+    {)}{{{\textcolor{green}{)}}}}1, % Highlight ) in green
+    columns=fullflexible % Ensure no unwanted spaces
+}
+
+
+%You can define your own environments for different programming languages, see, e.g.:
+%https://tex.stackexchange.com/questions/83882/how-to-highlight-python-syntax-in-latex-listings-lstinputlistings-command
+
+% -----------------------
+% Other
+% -----------------------
+
+\usepackage{lipsum}%for generating filler text

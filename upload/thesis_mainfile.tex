@@ -1,7 +1,9 @@
 
 \documentclass[11pt,letterpaper ,oneside ,openright]{book}
 
-\usepackage[pass]{geometry}
+\usepackage[pass
+            %,showframe
+            ]{geometry}
 
 \usepackage{glossaries}
 \usepackage{glossary-mcols}
@@ -79,22 +81,25 @@
 	
 		\pagestyle{plain}
 	% set Roman page numbers
-
+	\clearpage
+	\afterpage{\blankpage}
+    \clearpage
 	% acknowledgements
 	\pagenumbering{roman}
 
 	\input{./tex/abstract.tex}
 	\clearpage
 	\input{./tex/Abstract-de.tex}
-	\clearpage
-	\afterpage{\blankpage}
-\clearpage
+	
 	\input{./tex/Thanks.tex}
 
-\clearpage
 
 \glsaddall
 \printnoidxglossary[type=main,style=mcolindex,nonumberlist]
+
+	\clearpage
+	\afterpage{\blankpage}
+    \clearpage
 
 % table of contents
 \tableofcontents
@@ -114,14 +119,16 @@
 \fancyhead[LO]{\small \leftmark}
 	\pagenumbering{arabic}
 	% begin Arabic page numbers
+    %chapters
 	\input{./tex/introduction.tex}
 	\input{./tex/background.tex}
-	\input{./tex/Chapter2.tex}
 	\input{./tex/Chapter3.tex}
 	\input{./tex/Chapter4.tex}
 	\input{./tex/Chapter5.tex}
-	 %chapters
+	\input{./tex/Chapter6.tex}
 	 
-	 \printbibliography
+  	\printbibliography
+
+    \input{./tex/Appendix.tex}
 
 \end{document}
